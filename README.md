@@ -1,29 +1,50 @@
-<p align="center">
+<!-- <p align="center">
   <img src="docs/kids_first_logo.svg" alt="Kids First repository logo" width="660px" />
 </p>
 <p align="center">
   <a href="https://github.com/kids-first/kf-template-repo/blob/master/LICENSE"><img src="https://img.shields.io/github/license/kids-first/kf-template-repo.svg?style=for-the-badge"></a>
-</p>
+</p> -->
 
-# Kids First Repository Template
+# Kids First Dataservice Tools
 
-Use this template to bootstrap a new Kids First repository.
+CLI tools for bulk interaction with the dataservice. Built with (Kids First
+Pyton Utilities)[https://github.com/kids-first/kf-utils-python]
 
-### Badges
+## Installation
 
-Update the LICENSE badge to point to the new repo location on GitHub.
-Note that the LICENSE badge will fail to render correctly unless the repo has
-been set to **public**.
+Using pip
 
-Add additional badges for CI, docs, and other integrations as needed within the
-`<p>` tag next to the LICENSE.
+```sh
+pip install git+https://github.com/kids-first/kf-dataservice-tools.git@latest-release
+```
 
-### Repo Description
+# Toold included so far
 
-Update the repositories description with a short summary of the repository's
-intent.
-Include an appropriate emoji at the start of the summary.
+## Copy a list of kf_ids from one dataservice to another
 
-Add a handful of tags that summarize topics relating to the repository.
-If the repo has a documentation site or webpage, add it next to the repository
-description.
+Copy a list of kf_ids. The list of kf_ids should be in a file, minimally with a
+column named `kf_id`.
+
+```sh
+kf_dscopy -s prd -t localhost -f "path/to/file.csv"
+```
+
+## Copy an entire study
+
+Copy an entire study (study + all of its descendants)
+
+```sh
+kf_dscopy -s prd -t localhost study SD_ME0WME0W
+```
+
+Copy an entire study and copy all sequencing centers
+
+```sh
+kf_dscopy -s prd -t localhost study SD_ME0WME0W --copy_sc
+```
+
+## Copy sequencing centers
+
+Check if all the sequencing centers in the source are in
+target. Copy all the sequencing centers not in target into
+target.
