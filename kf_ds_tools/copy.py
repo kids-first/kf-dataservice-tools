@@ -2,20 +2,14 @@
 Copies contents of prd dataservice to local dataservice for a particular study
 """
 
-import sys
 
 from kf_utils.dataservice.descendants import find_descendants_by_kfids
 from kf_utils.dataservice.meta import get_endpoint
-from kf_utils.dataservice.scrape import (
-    yield_entities,
-    yield_entities_from_kfids,
-)
 
 import requests
 
-from kf_ds_tools.common.constants import banned_items
 from kf_ds_tools.common.logging import get_logger
-from kf_ds_tools.common.utils import check_status, clean_response_body
+from kf_ds_tools.common.utils import clean_response_body
 from kf_ds_tools.extract import get_kf_ids
 from kf_ds_tools.load import load_kf_id
 

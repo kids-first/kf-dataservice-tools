@@ -1,10 +1,7 @@
-import sys
-
 from kf_utils.dataservice.meta import get_endpoint
 
 import requests
 
-from kf_ds_tools.common.constants import banned_items
 from kf_ds_tools.common.logging import get_logger
 from kf_ds_tools.common.utils import clean_response_body
 
