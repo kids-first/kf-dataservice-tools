@@ -1,5 +1,18 @@
 # Kids First Dataservice Tools Change History
 
+## Release 0.1.2
+
+### Summary
+
+- Emojis: 🐛 x1, 🔧 x1
+- Categories: Fixes x1, Other Changes x1
+
+### New features and changes
+
+- [#9](https://github.com/kids-first/kf-dataservice-tools/pull/9) - 🐛 fix participant1 familyrelationship issue - [e13854dd](https://github.com/kids-first/kf-dataservice-tools/commit/e13854dd6e98d3b9f5f823fa62a1b230a01b911c) by [chris-s-friedman](https://github.com/chris-s-friedman)
+- [#8](https://github.com/kids-first/kf-dataservice-tools/pull/8) - 🔧 get linter to run against master - [a8aebb5b](https://github.com/kids-first/kf-dataservice-tools/commit/a8aebb5b1461f90204845e6ddff9fb9df78c1f8c) by [chris-s-friedman](https://github.com/chris-s-friedman)
+
+
 ## Release 0.1.1
 
 ### Summary
