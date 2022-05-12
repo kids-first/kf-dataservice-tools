@@ -4,7 +4,11 @@ Common Utilities for working with the dataservice.
 import sys
 
 import requests
+
 from kf_ds_tools.common.constants import banned_items
+from kf_ds_tools.common.logging import get_logger
+
+logger = get_logger(__name__, testing_mode=False, log_format="detailed")
 
 
 def test_url_connection(url):
@@ -19,7 +23,7 @@ def test_url_connection(url):
         (url + "status"), headers={"Content-Type": "application/json"}
     )
     if resp.status_code != 200:
-        print(("conection FAILED to " + url))
+        logger.debug(("conection FAILED to " + url))
     return resp
 
 
@@ -33,8 +37,10 @@ def check_status(source, target):
     """
     # check that both source and target can be connected to
     if test_url_connection(source).status_code != 200:
+        logger.error("Connction failed to " + source)
         sys.exit(0)
     if test_url_connection(target).status_code != 200:
+        logger.error("Connction failed to " + target)
         sys.exit(0)
 
 
@@ -46,4 +52,5 @@ def clean_response_body(body):
     :return: response body with unused items removed
     :rtype: dict
     """
+    logger.debug(f"cleaning body of {body['kf_id']}")
     return {k: body[k] for k in body if k not in banned_items}

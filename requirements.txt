@@ -1,3 +1,4 @@
 click
 requests
+colorlog
 kf_utils @ git+https://github.com/kids-first/kf-utils-python.git

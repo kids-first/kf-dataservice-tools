@@ -1,11 +1,11 @@
-import sys
-
 from kf_utils.dataservice.meta import get_endpoint
 
 import requests
 
-from kf_ds_tools.common.constants import banned_items
+from kf_ds_tools.common.logging import get_logger
 from kf_ds_tools.common.utils import clean_response_body
+
+logger = get_logger(__name__, testing_mode=False, log_format="detailed")
 
 
 def load_kf_id(target, body):
@@ -16,7 +16,10 @@ def load_kf_id(target, body):
     :param body: json -style payload to load into the target dataservice
     :type body: dict
     """
-    endpoint = get_endpoint(body["kf_id"])
+    kf_id = body["kf_id"]
+    logger.debug(f"begining load stage for {kf_id}")
+    endpoint = get_endpoint(kf_id)
+    logger.debug(f"endpoint: {endpoint}")
     clean_body = clean_response_body(body)
     if endpoint == "participants":
         _, _, clean_body["study_id"] = body["_links"]["study"].rpartition("/")
@@ -71,13 +74,14 @@ def load_kf_id(target, body):
             _, _, clean_body["read_group_id"] = body["_links"][
                 "read_group"
             ].rpartition("/")
-    print("loading " + body["kf_id"] + " into " + target + endpoint + "/")
+    logger.debug("cleaning of body complete")
+    logger.info("loading " + kf_id + " into " + target + endpoint + "/")
     resp = requests.post(
         target + endpoint + "/",
         headers={"Content-Type": "application/json"},
         json=clean_body,
     )
     if resp.status_code == 201:
-        print(resp.json()["_status"]["message"])
+        logger.info(resp.json()["_status"]["message"])
     elif resp.status_code != 201:
-        print(clean_body["kf_id"] + " - " + resp.json()["_status"]["message"])
+        logger.warning(kf_id + " - " + resp.json()["_status"]["message"])
