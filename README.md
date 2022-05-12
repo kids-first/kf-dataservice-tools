@@ -18,7 +18,7 @@ Using pip
 pip install git+https://github.com/kids-first/kf-dataservice-tools.git@latest-release
 ```
 
-# Toold included so far
+# Tools included so far
 
 ## Copy a list of kf_ids from one dataservice to another
 
