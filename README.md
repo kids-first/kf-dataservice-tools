@@ -48,3 +48,7 @@ kf_dscopy -s prd -t localhost study SD_ME0WME0W --copy_sc
 Check if all the sequencing centers in the source are in
 target. Copy all the sequencing centers not in target into
 target.
+
+```sh
+kf_dscopy -s prd -t localhost sequencing_centers
+```
