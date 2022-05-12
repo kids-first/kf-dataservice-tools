@@ -3,7 +3,6 @@ Copies contents of prd dataservice to local dataservice for a particular study
 """
 import click
 import pandas as pd
-import requests
 
 from kf_ds_tools.common.constants import KF_API_URLS
 from kf_ds_tools.common.utils import check_status
@@ -49,8 +48,8 @@ def copy(ctx, source, target):
     "--file",
     type=click.Path(exists=True, dir_okay=False),
     required=True,
-    help="""csv file with a column named 'kf_id' that holds the kf_ids of 
-    interest""",
+    help="""csv file with a column named 'kf_id' that holds the kf_ids of
+     interest""",
 )
 @click.pass_context
 def copy_kfids(ctx, file):
@@ -78,9 +77,9 @@ def copy_study(ctx, study_id, copy_sc):
 
 @copy.command("sequencing_centers")
 @click.pass_context
-def copy_study(ctx):
+def copy_sequencing_center(ctx):
     sequencing_center_handler(ctx.obj["source"], ctx.obj["target"])
 
 
 if __name__ == "__main__":
-    copy()
+    copy()  # pylint: disable=no-value-for-parameter
