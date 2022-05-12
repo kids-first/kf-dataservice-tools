@@ -1,5 +1,17 @@
 # Kids First Dataservice Tools Change History
 
+## Release 0.2.0
+
+### Summary
+
+- Emojis: 🔊 x1
+- Categories: Additions x1
+
+### New features and changes
+
+- [#11](https://github.com/kids-first/kf-dataservice-tools/pull/11) - 🔊 add logging and fix linter issues - [9b3d1b53](https://github.com/kids-first/kf-dataservice-tools/commit/9b3d1b5390ac833faa6bb0e63c4139103adbccfa) by [chris-s-friedman](https://github.com/chris-s-friedman)
+
+
 ## Release 0.1.2
 
 ### Summary
