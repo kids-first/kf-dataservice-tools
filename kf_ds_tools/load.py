@@ -1,7 +1,8 @@
 import sys
 
-import requests
 from kf_utils.dataservice.meta import get_endpoint
+
+import requests
 
 from kf_ds_tools.common.constants import banned_items
 from kf_ds_tools.common.utils import clean_response_body
@@ -20,7 +21,9 @@ def load_kf_id(target, body):
     if endpoint == "participants":
         _, _, clean_body["study_id"] = body["_links"]["study"].rpartition("/")
     elif endpoint == "family-relationships":
-        _, _, clean_body["participant1_id"] = ["participant1"].rpartition("/")
+        _, _, clean_body["participant1_id"] = body["_links"][
+            "participant1"
+        ].rpartition("/")
         _, _, clean_body["participant2_id"] = body["_links"][
             "participant2"
         ].rpartition("/")
