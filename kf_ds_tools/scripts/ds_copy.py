@@ -39,6 +39,7 @@ def copy(ctx, source, target):
     ctx.ensure_object(dict)
     ctx.obj["source"] = KF_API_URLS.get(source.lower()) or source
     ctx.obj["target"] = KF_API_URLS.get(target.lower()) or target
+    check_status(ctx.obj["source"], ctx.obj["target"])
     pass
 
 
@@ -56,7 +57,6 @@ def copy_kfids(ctx, file):
     """Copy the kf_ids from the ids in the given file from
     the source dataservice to the target dataservice
     """
-    check_status(ctx.obj["source"], ctx.obj["target"])
     kf_id_list = pd.read_csv(file)["kf_id"].to_list()
     copy_kf_ids(ctx.obj["source"], ctx.obj["target"], kf_id_list)
 
