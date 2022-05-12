@@ -13,27 +13,32 @@ from kf_ds_tools.copy import (
     sequencing_center_handler,
 )
 
+api_url_help_text = (
+    "Either http url to dataservice or \n"
+    + f"{[i for i in KF_API_URLS.keys()]}"
+)
+
 
 @click.group()
 @click.option(
     "-s",
     "--source",
-    type=click.Choice(KF_API_URLS.keys(), case_sensitive=False),
+    type=str,
     required=True,
-    help="Source dataservice to copy FROM",
+    help="Source dataservice to copy FROM. " + api_url_help_text,
 )
 @click.option(
     "-t",
     "--target",
-    type=click.Choice(KF_API_URLS.keys(), case_sensitive=False),
+    type=str,
     required=True,
-    help="Target dataservice to copy TO",
+    help="Target dataservice to copy TO. " + api_url_help_text,
 )
 @click.pass_context
 def copy(ctx, source, target):
     ctx.ensure_object(dict)
-    ctx.obj["source"] = KF_API_URLS.get(source)
-    ctx.obj["target"] = KF_API_URLS.get(target)
+    ctx.obj["source"] = KF_API_URLS.get(source.lower()) or source
+    ctx.obj["target"] = KF_API_URLS.get(target.lower()) or target
     pass
 
 
