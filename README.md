@@ -7,8 +7,8 @@
 
 # Kids First Dataservice Tools
 
-CLI tools for bulk interaction with the dataservice. Built with (Kids First
-Pyton Utilities)[https://github.com/kids-first/kf-utils-python]
+Command-line tools for bulk interaction with the dataservice. Built with (Kids
+First Pyton Utilities)[https://github.com/kids-first/kf-utils-python]
 
 ## Installation
 
