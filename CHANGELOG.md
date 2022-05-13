@@ -1,5 +1,18 @@
 # Kids First Dataservice Tools Change History
 
+## Release 0.2.1
+
+### Summary
+
+- Emojis: 🔧 x1, ✏️ x1
+- Categories: Fixes x1, Other Changes x1
+
+### New features and changes
+
+- [#14](https://github.com/kids-first/kf-dataservice-tools/pull/14) - 🔧 ignore the changelog when linting md files - [63b8bf12](https://github.com/kids-first/kf-dataservice-tools/commit/63b8bf129076e002f03d38ceb7319a09eb6d7322) by [chris-s-friedman](https://github.com/chris-s-friedman)
+- [#13](https://github.com/kids-first/kf-dataservice-tools/pull/13) - ✏️ correct spelling for connection - [cfdb9217](https://github.com/kids-first/kf-dataservice-tools/commit/cfdb92172fa234fba0d353492294967926319710) by [chris-s-friedman](https://github.com/chris-s-friedman)
+
+
 ## Release 0.2.0
 
 ### Summary
