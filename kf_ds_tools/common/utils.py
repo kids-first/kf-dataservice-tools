@@ -23,7 +23,7 @@ def test_url_connection(url):
         (url + "status"), headers={"Content-Type": "application/json"}
     )
     if resp.status_code != 200:
-        logger.debug(("conection FAILED to " + url))
+        logger.debug(("Connection FAILED to " + url))
     return resp
 
 
@@ -37,10 +37,10 @@ def check_status(source, target):
     """
     # check that both source and target can be connected to
     if test_url_connection(source).status_code != 200:
-        logger.error("Connction failed to " + source)
+        logger.error("Connection failed to " + source)
         sys.exit(0)
     if test_url_connection(target).status_code != 200:
-        logger.error("Connction failed to " + target)
+        logger.error("Connection failed to " + target)
         sys.exit(0)
 
 
