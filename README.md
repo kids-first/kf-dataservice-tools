@@ -7,8 +7,8 @@
 
 # Kids First Dataservice Tools
 
-CLI tools for bulk interaction with the dataservice. Built with (Kids First
-Pyton Utilities)[https://github.com/kids-first/kf-utils-python]
+Command-line tools for bulk interaction with the dataservice. Built with (Kids
+First Pyton Utilities)[https://github.com/kids-first/kf-utils-python]
 
 ## Installation
 
@@ -26,7 +26,25 @@ Copy a list of kf_ids. The list of kf_ids should be in a file, minimally with a
 column named `kf_id`.
 
 ```sh
-kf_dscopy -s prd -t localhost -f "path/to/file.csv"
+kf_dscopy -s prd -t localhost kf_ids -f "path/to/file.csv"
+```
+
+Copy a single kf_id
+
+```sh
+kf_dscopy -s prd -t localhost kfids -k PT_GRMPYCAT
+```
+
+Copy multiple kf_ids
+
+```sh
+kf_dscopy -s prd -t localhost kfids -k PT_GRMPYCAT -k BS_FRRRBA11
+```
+
+Copy kf_ids that are in a file manifest and some specific kf_id(s):
+
+```sh
+kf_dscopy -s prd -t localhost kfids -f "path/to/file.csv" -k PT_GRMPYCAT -k BS_FRRRBA11
 ```
 
 ## Copy an entire study

@@ -47,21 +47,34 @@ def copy(ctx, source, target):
     "-f",
     "--file",
     type=click.Path(exists=True, dir_okay=False),
-    required=True,
+    required=False,
     help="""csv file with a column named 'kf_id' that holds the kf_ids of
      interest""",
 )
+@click.option(
+    "-k",
+    "--kf_id",
+    type=str,
+    required=False,
+    multiple=True,
+    help="KF_ID of item to copy. Multiple KF_IDs can be supplied.",
+)
 @click.pass_context
-def copy_kfids(ctx, file):
+def copy_kfids(ctx, file, kf_id):
     """Copy the kf_ids from the ids in the given file from
     the source dataservice to the target dataservice
     """
-    kf_id_list = pd.read_csv(file)["kf_id"].to_list()
+    breakpoint()
+    if file:
+        kf_ids_file = pd.read_csv(file)["kf_id"].to_list()
+    else:
+        kf_ids_file = [None]
+    kf_id_list = {i for i in list(kf_id) + kf_ids_file if i}
     copy_kf_ids(ctx.obj["source"], ctx.obj["target"], kf_id_list)
 
 
-@copy.command("study")
-@click.argument("study_id", type=str)
+@copy.command("descendants")
+@click.argument("kf_id", type=str)
 @click.option(
     "-c",
     "--copy_sc",
@@ -69,10 +82,13 @@ def copy_kfids(ctx, file):
     help="if sequencing experiments are not in the target, copy them",
 )
 @click.pass_context
-def copy_study(ctx, study_id, copy_sc):
+def copy_descendants(ctx, kf_id, copy_sc):
+    """Copy all descendants of a kf_id. This is a way to copy everything under
+    a study.
+    """
     if copy_sc:
         sequencing_center_handler(ctx.obj["source"], ctx.obj["target"])
-    copy_all_descendants(ctx.obj["source"], ctx.obj["target"], study_id)
+    copy_all_descendants(ctx.obj["source"], ctx.obj["target"], kf_id)
 
 
 @copy.command("sequencing_centers")

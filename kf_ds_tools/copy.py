@@ -10,8 +10,8 @@ import requests
 
 from kf_ds_tools.common.logging import get_logger
 from kf_ds_tools.common.utils import clean_response_body
-from kf_ds_tools.extract import get_kf_ids
-from kf_ds_tools.load import load_kf_id
+from kf_ds_tools.etl.extract import get_kf_ids
+from kf_ds_tools.etl.load import load_kf_id
 
 logger = get_logger(__name__, testing_mode=False, log_format="detailed")
 
@@ -62,52 +62,6 @@ def sequencing_center_handler(source, target):
         if len(load_these) > 0:
             for center in load_these:
                 load_kf_id(target, center)
-
-
-# def study_handler(study_id, source, target):
-#     """Check to make sure that the given study is in target.
-#     If a study is not in the target, loads that study into target.
-
-#     :param study_id: kf_id of study of question
-#     :type study_id: str
-#     :param source: url of source dataservice
-#     :type source: str
-#     :param target: url of target dataservice
-#     :type target: str
-#     """
-#     print(
-#         "Checking to see if "
-#         + args.study_id
-#         + " is in "
-#         + args.target
-#         + "studies/"
-#     )
-#     resp = requests.get(
-#         (args.target + "studies/" + args.study_id),
-#         headers={"Content-Type": "application/json"},
-#     )
-#     print(resp.json()["_status"])
-#     if resp.status_code == 404:
-#         print(
-#             (
-#                 "pulling study info from "
-#                 + (args.source + "studies/" + args.study_id)
-#             )
-#         )
-#         study_info = requests.get(
-#             (args.source + "studies/" + args.study_id),
-#             headers={"Content-Type": "application/json"},
-#         )
-#         study_body = study_info.json()["results"]
-#         print("loading " + args.study_id + " into " + args.target + "studies/")
-#         resp = requests.post(
-#             args.target + "studies/",
-#             headers={"Content-Type": "application/json"},
-#             json=study_body,
-#         )
-#         print(resp.json()["_status"])
-#         if resp.status_code != 201:
-#             sys.exit(0)
 
 
 def copy_kf_ids(source, target, kf_id_list):
