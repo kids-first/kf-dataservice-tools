@@ -10,8 +10,8 @@ import requests
 
 from kf_ds_tools.common.logging import get_logger
 from kf_ds_tools.common.utils import clean_response_body
-from kf_ds_tools.extract import get_kf_ids
-from kf_ds_tools.load import load_kf_id
+from kf_ds_tools.etl.extract import get_kf_ids
+from kf_ds_tools.etl.load import load_kf_id
 
 logger = get_logger(__name__, testing_mode=False, log_format="detailed")
 
