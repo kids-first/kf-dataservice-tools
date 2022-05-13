@@ -64,52 +64,6 @@ def sequencing_center_handler(source, target):
                 load_kf_id(target, center)
 
 
-# def study_handler(study_id, source, target):
-#     """Check to make sure that the given study is in target.
-#     If a study is not in the target, loads that study into target.
-
-#     :param study_id: kf_id of study of question
-#     :type study_id: str
-#     :param source: url of source dataservice
-#     :type source: str
-#     :param target: url of target dataservice
-#     :type target: str
-#     """
-#     print(
-#         "Checking to see if "
-#         + args.study_id
-#         + " is in "
-#         + args.target
-#         + "studies/"
-#     )
-#     resp = requests.get(
-#         (args.target + "studies/" + args.study_id),
-#         headers={"Content-Type": "application/json"},
-#     )
-#     print(resp.json()["_status"])
-#     if resp.status_code == 404:
-#         print(
-#             (
-#                 "pulling study info from "
-#                 + (args.source + "studies/" + args.study_id)
-#             )
-#         )
-#         study_info = requests.get(
-#             (args.source + "studies/" + args.study_id),
-#             headers={"Content-Type": "application/json"},
-#         )
-#         study_body = study_info.json()["results"]
-#         print("loading " + args.study_id + " into " + args.target + "studies/")
-#         resp = requests.post(
-#             args.target + "studies/",
-#             headers={"Content-Type": "application/json"},
-#             json=study_body,
-#         )
-#         print(resp.json()["_status"])
-#         if resp.status_code != 201:
-#             sys.exit(0)
-
-
 def copy_kf_ids(source, target, kf_id_list):
     """Copy a list of things from a source dataservice to a target dataservice
 
