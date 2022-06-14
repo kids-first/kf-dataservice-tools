@@ -42,7 +42,7 @@ def copy(ctx, source, target):
     pass
 
 
-@copy.command("kfids")
+@copy.command("file")
 @click.option(
     "-f",
     "--file",
@@ -52,7 +52,7 @@ def copy(ctx, source, target):
     interest""",
 )
 @click.pass_context
-def copy_kfids(ctx, file):
+def copy_file(ctx, file):
     """Copy the kf_ids from the ids in the given file from
     the source dataservice to the target dataservice
     """
