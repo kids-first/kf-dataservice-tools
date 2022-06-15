@@ -26,7 +26,7 @@ Copy a list of kf_ids. The list of kf_ids should be in a file, minimally with a
 column named `kf_id`.
 
 ```sh
-kf_dscopy -s prd -t localhost -f "path/to/file.csv"
+kf_dscopy -s prd -t localhost file -f "path/to/file.csv"
 ```
 
 ## Copy an entire study
