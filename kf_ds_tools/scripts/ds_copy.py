@@ -42,6 +42,42 @@ def copy(ctx, source, target):
     pass
 
 
+@copy.command("kfids")
+@click.option(
+    "-k",
+    "--kfid",
+    type=str,
+    required=True,
+    multiple=True,
+    help="kf_id to copy.",
+)
+@click.option(
+    "-c",
+    "--copy_sc",
+    is_flag=True,
+    help="if sequencing centers are not in the target, copy them",
+)
+@click.option(
+    "-d",
+    "--copy_descendants",
+    is_flag=True,
+    help="copy the descendants of the given kfids",
+)
+@click.pass_context
+def copy_kfids(ctx, kfid, copy_sc, copy_descendants):
+    """Copy the kf_ids from the ids in the given file from
+    the source dataservice to the target dataservice
+    """
+    check_status(ctx.obj["source"], ctx.obj["target"])
+    if copy_sc:
+        sequencing_center_handler(ctx.obj["source"], ctx.obj["target"])
+    if copy_descendants:
+        for kf_id in kfid:
+            copy_all_descendants(ctx.obj["source"], ctx.obj["target"], kf_id)
+    else:
+        copy_kf_ids(ctx.obj["source"], ctx.obj["target"], kfid)
+
+
 @copy.command("file")
 @click.option(
     "-f",
