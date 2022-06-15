@@ -20,6 +20,15 @@ pip install git+https://github.com/kids-first/kf-dataservice-tools.git@latest-re
 
 # Tools included so far
 
+## Copy specific kf_ids from one dataservice to another
+
+Copy a list of kf_ids. The list of kf_ids should be in a file, minimally with a
+column named `kf_id`.
+
+```sh
+kf_dscopy -s prd -t localhost kfids -k BS_12345678 -k PT_ABCDEFGH 
+```
+
 ## Copy a list of kf_ids from one dataservice to another
 
 Copy a list of kf_ids. The list of kf_ids should be in a file, minimally with a
