@@ -1,5 +1,19 @@
 # Kids First Dataservice Tools Change History
 
+## Release 0.3.0
+
+### Summary
+
+- Emojis: ✨ x3
+- Categories: Additions x3
+
+### New features and changes
+
+- [#19](https://github.com/kids-first/kf-dataservice-tools/pull/19) - ✨ add tool to delete items from a dataservice - [50e15ebf](https://github.com/kids-first/kf-dataservice-tools/commit/50e15ebf682a2a87faee2031b4155fb9bbab8c07) by [chris-s-friedman](https://github.com/chris-s-friedman)
+- [#18](https://github.com/kids-first/kf-dataservice-tools/pull/18) - ✨ add option to exit on failure to connect to pg - [b81c23fb](https://github.com/kids-first/kf-dataservice-tools/commit/b81c23fba850e034f7872c20db3dab181c6433fd) by [chris-s-friedman](https://github.com/chris-s-friedman)
+- [#16](https://github.com/kids-first/kf-dataservice-tools/pull/16) - ✨ refactor copy operations - [3ab8e2f6](https://github.com/kids-first/kf-dataservice-tools/commit/3ab8e2f6e2db0df76f7396a7c3ba5c2f11a63e06) by [chris-s-friedman](https://github.com/chris-s-friedman)
+
+
 ## Release 0.2.1
 
 ### Summary
