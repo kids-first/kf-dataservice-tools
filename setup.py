@@ -26,6 +26,7 @@ setup(
     entry_points={
         "console_scripts": [
             "kf_dscopy = kf_ds_tools.scripts.ds_copy:copy",
+            "kf_dsdelete = kf_ds_tools.scripts.ds_delete:delete",
         ],
     },
     python_requires=">=3.6, <4",
