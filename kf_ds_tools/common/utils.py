@@ -11,11 +11,13 @@ from kf_ds_tools.common.logging import get_logger
 logger = get_logger(__name__, testing_mode=False, log_format="detailed")
 
 
-def test_url_connection(url):
+def test_url_connection(url, exit_on_non200=False):
     """Test that it's possible to connect to the dataservice url
 
     :param url: url of the dataservice
     :type url: str
+    :param exit_on_non200: exit script on a status code that isn't 200
+    :type exit_on_non200: bool
     :return: response from the url
     :rtype: requests.Response
     """
@@ -23,7 +25,11 @@ def test_url_connection(url):
         (url + "status"), headers={"Content-Type": "application/json"}
     )
     if resp.status_code != 200:
-        logger.debug(("Connection FAILED to " + url))
+        if exit_on_non200:
+            logger.error(("Connection FAILED to " + url))
+            sys.exit(0)
+        else:
+            logger.debug(("Connection FAILED to " + url))
     return resp
 
 
