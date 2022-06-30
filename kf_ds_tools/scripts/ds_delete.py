@@ -55,7 +55,7 @@ def delete(ctx, host, dry_run):
     help="KF_ID of item to delete. Multiple KF_IDs can be supplied.",
 )
 @click.pass_context
-def delete_kfids(ctx, file, kf_id):
+def delete_kf_ids(ctx, file, kf_id):
     """delete the supplied kf_ids"""
     breakpoint()
     if file:

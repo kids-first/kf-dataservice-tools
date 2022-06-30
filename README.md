@@ -79,18 +79,18 @@ kf_dscopy -s prd -t localhost sequencing_centers
 
 This mirrors kf_dscopy with the `kfids` option
 
-```
+```sh
 kf_dsdelete -h localhost kfids -k BS_1234567 -k DX_ABCDEFGH
 ```
 
 ### Delete a study
 
-```
+```sh
 kf_dsdelete -h localhost study -s SD_12345678
 ```
 
 ### Delete everything in a dataservice
 
-```
+```sh
 kf_dsdelete -h localhost everything
 ```
