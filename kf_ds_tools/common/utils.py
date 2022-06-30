@@ -60,3 +60,12 @@ def clean_response_body(body):
     """
     logger.debug(f"cleaning body of {body['kf_id']}")
     return {k: body[k] for k in body if k not in banned_items}
+
+
+def dry_run_handler(dry_run=True):
+    logger.info("testing dry run value")
+    if dry_run:
+        logger.info("Dry Run detected")
+    else:
+        logger.warning("Dry Run is off")
+    return dry_run
