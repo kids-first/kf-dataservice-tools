@@ -72,3 +72,25 @@ target.
 ```sh
 kf_dscopy -s prd -t localhost sequencing_centers
 ```
+
+## Delete items from a dataservice
+
+### Delete specific KF_IDs
+
+This mirrors kf_dscopy with the `kfids` option
+
+```
+kf_dsdelete -h localhost kfids -k BS_1234567 -k DX_ABCDEFGH
+```
+
+### Delete a study
+
+```
+kf_dsdelete -h localhost study -s SD_12345678
+```
+
+### Delete everything in a dataservice
+
+```
+kf_dsdelete -h localhost everything
+```
