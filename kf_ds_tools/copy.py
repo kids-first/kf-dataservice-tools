@@ -2,7 +2,6 @@
 Copies contents of prd dataservice to local dataservice for a particular study
 """
 
-
 from kf_utils.dataservice.descendants import find_descendants_by_kfids
 from kf_utils.dataservice.meta import get_endpoint
 
@@ -97,7 +96,13 @@ def copy_all_descendants(source, target, kf_id):
         (source + get_endpoint(kf_id) + "/" + kf_id),
         headers={"Content-Type": "application/json"},
     )
-    body = kf_id_info.json()["results"]
+    body = kf_id_info.json()
+    # need to do some restructuring of the response body to make a single
+    # item look like a list of items. In lists of kf_id's, entities get
+    # '_links' bundled in the result. In a single 'kf_id', _Links are not
+    # bundled with results
+    body["results"]["_links"] = body["_links"]
+    body = body["results"]
     load_kf_id(target, body)
 
     # Fetch the data from the source dataservice
