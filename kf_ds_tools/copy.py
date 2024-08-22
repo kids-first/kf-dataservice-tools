@@ -96,6 +96,7 @@ def copy_all_descendants(source, target, kf_id):
         (source + get_endpoint(kf_id) + "/" + kf_id),
         headers={"Content-Type": "application/json"},
     )
+    kf_id_info.raise_for_status()
     body = kf_id_info.json()
     # need to do some restructuring of the response body to make a single
     # item look like a list of items. In lists of kf_id's, entities get
