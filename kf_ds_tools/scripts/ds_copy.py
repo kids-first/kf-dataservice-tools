@@ -1,6 +1,7 @@
 """
 Copies contents of prd dataservice to local dataservice for a particular study
 """
+
 import click
 import pandas as pd
 
@@ -64,7 +65,6 @@ def copy_kfids(ctx, file, kf_id):
     """Copy the kf_ids from the ids in the given file from
     the source dataservice to the target dataservice
     """
-    breakpoint()
     if file:
         kf_ids_file = pd.read_csv(file)["kf_id"].to_list()
     else:
